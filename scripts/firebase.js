@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+import "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCoQWXZivElKOajt5XEzlhQ5-eXhX68-5Y",
@@ -30,7 +31,7 @@ const createacctbtn = document.getElementById("create-acct-btn");
 
 const returnBtn = document.getElementById("return-btn");
 
-var email, password, signupEmail, signupPassword, confirmSignupEmail, confirmSignUpPassword;
+var email, password, signupEmail, signupPassword, confirmSignUpPassword;
 
 createacctbtn.addEventListener("click", function() {
   var isVerified = true;
@@ -38,9 +39,10 @@ createacctbtn.addEventListener("click", function() {
   signupEmail = signupEmailIn.value;
   signupPassword = signupPasswordIn.value;
   confirmSignUpPassword = confirmSignUpPasswordIn.value;
+
   if(signupPassword != confirmSignUpPassword) {
-      window.alert("Password fields do not match. Try again.")
-      isVerified = false;
+    window.alert("Password fields do not match. Try again.")
+    isVerified = false;
   }
   
   if(signupEmail == null || signupPassword == null || confirmSignUpPassword == null) {
@@ -64,14 +66,12 @@ createacctbtn.addEventListener("click", function() {
 
 submitButton.addEventListener("click", function() {
   email = emailInput.value;
-  console.log(email);
   password = passwordInput.value;
-  console.log(password);
 
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      window.alert("Success! Welcome back!");
+      window.location.href = "./sites/home.html";
     })
     .catch((error) => {
       const errorCode = error.code;
