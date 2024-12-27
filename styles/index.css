@@ -4,19 +4,20 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: "Nova Slim", Verdana, sans-serif;
 }
 
 body {
-  background-color: #f9fdff;
+    background-image: linear-gradient(#8174A0, #A888B5, #EFB6C8, #FFD2A0 );
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 h1 {
   margin-bottom: 8%;
   text-align: center;
   font-family: "Nova Slim", Verdana, sans-serif;
-  color: #0583D2;
-  letter-spacing: 0.1em;
+  color: #8174A0;
 }
 
 p {
@@ -48,19 +49,15 @@ input, button {
 
 .login-container {
   background-color: white;
-  padding: 7%;
+  padding: 5%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  /* horizontal align */
-  width: 40vw;
-  margin-left: 30vw;
-  /* vertical align */
-  height: 70vh;
-  margin-top: 15vh;
+  width: 30rem;
+  margin: auto;
+  margin-top: 5rem;
 }
 
 #submit, #create-acct-btn {
-  background-color: #0583D2;
-  color: white;
+  background-color: #FFD2A0;
   border: none;
   margin-top: 5%;
 }

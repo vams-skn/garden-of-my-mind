@@ -24,7 +24,6 @@ const main = document.getElementById("main");
 const createacct = document.getElementById("create-acct")
 
 const signupEmailIn = document.getElementById("email-signup");
-const confirmSignupEmailIn = document.getElementById("confirm-email-signup");
 const signupPasswordIn = document.getElementById("password-signup");
 const confirmSignUpPasswordIn = document.getElementById("confirm-password-signup");
 const createacctbtn = document.getElementById("create-acct-btn");
@@ -37,12 +36,6 @@ createacctbtn.addEventListener("click", function() {
   var isVerified = true;
 
   signupEmail = signupEmailIn.value;
-  confirmSignupEmail = confirmSignupEmailIn.value;
-  if(signupEmail != confirmSignupEmail) {
-      window.alert("Email fields do not match. Try again.")
-      isVerified = false;
-  }
-
   signupPassword = signupPasswordIn.value;
   confirmSignUpPassword = confirmSignUpPasswordIn.value;
   if(signupPassword != confirmSignUpPassword) {
@@ -50,7 +43,7 @@ createacctbtn.addEventListener("click", function() {
       isVerified = false;
   }
   
-  if(signupEmail == null || confirmSignupEmail == null || signupPassword == null || confirmSignUpPassword == null) {
+  if(signupEmail == null || signupPassword == null || confirmSignUpPassword == null) {
     window.alert("Please fill out all required fields.");
     isVerified = false;
   }
@@ -58,15 +51,12 @@ createacctbtn.addEventListener("click", function() {
   if(isVerified) {
     createUserWithEmailAndPassword(auth, signupEmail, signupPassword)
       .then((userCredential) => {
-      // Signed in 
       const user = userCredential.user;
-      // ...
       window.alert("Success! Account created.");
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      // ..
       window.alert("Error occurred. Try again.");
     });
   }
@@ -80,16 +70,12 @@ submitButton.addEventListener("click", function() {
 
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      // Signed in
       const user = userCredential.user;
-      console.log("Success! Welcome back!");
       window.alert("Success! Welcome back!");
-      // ...
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.log("Error occurred. Try again.");
       window.alert("Error occurred. Try again.");
     });
 });
