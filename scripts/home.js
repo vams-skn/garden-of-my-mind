@@ -1,12 +1,11 @@
-import { app, auth, db } from "./firebase.js";
+const newEntry = document.getElementById('new-garden-entry');
+const visitG = document.getElementById('visit-my-garden');
 
-document.getElementById("fill-name").innerText = auth.currentUser.displayName;
-// const auth = getAuth();
-const user = auth.currentUser;
+visitG.addEventListener('click', function() {
+  console.log("clicked");
+  window.location.href = "./garden.html";
+});
 
-if (user) {
-  const displayName = user.displayName;
-  console.log("Logged-in User's Name:", displayName);
-} else {
-  console.log("No user is logged in.");
-}
+newEntry.addEventListener('click', function() {
+  window.location.href = './new.html';
+});
