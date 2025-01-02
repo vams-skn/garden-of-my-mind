@@ -55,11 +55,10 @@ createacctbtn.addEventListener("click", function () {
         const user = userCredential.user;
         const uid = user.uid;
 
-        // Create a new Firestore document for the user
         const usersDocRef = doc(db, "users", uid);
 
         setDoc(usersDocRef, {
-          plants: ["wisdom"],
+          plants: ["wisdom"]
         })
           .then(() => {
             console.log("User document created successfully!");
