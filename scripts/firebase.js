@@ -1,7 +1,6 @@
 import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
+import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCoQWXZivElKOajt5XEzlhQ5-eXhX68-5Y",
@@ -33,34 +32,49 @@ const returnBtn = document.getElementById("return-btn");
 
 var email, password, signupEmail, signupPassword, confirmSignUpPassword;
 
-createacctbtn.addEventListener("click", function() {
-  var isVerified = true;
+createacctbtn.addEventListener("click", function () {
+  let isVerified = true;
 
   signupEmail = signupEmailIn.value;
   signupPassword = signupPasswordIn.value;
   confirmSignUpPassword = confirmSignUpPasswordIn.value;
 
-  if(signupPassword != confirmSignUpPassword) {
-    window.alert("Password fields do not match. Try again.")
+  if (signupPassword !== confirmSignUpPassword) {
+    window.alert("Password fields do not match. Try again.");
     isVerified = false;
   }
-  
-  if(signupEmail == null || signupPassword == null || confirmSignUpPassword == null) {
+
+  if (!signupEmail || !signupPassword || !confirmSignUpPassword) {
     window.alert("Please fill out all required fields.");
     isVerified = false;
   }
-  
-  if(isVerified) {
+
+  if (isVerified) {
     createUserWithEmailAndPassword(auth, signupEmail, signupPassword)
       .then((userCredential) => {
-      const user = userCredential.user;
-      window.alert("Success! Account created.");
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      window.alert("Error occurred. Try again.");
-    });
+        const user = userCredential.user;
+        const uid = user.uid;
+
+        // Create a new Firestore document for the user
+        const usersDocRef = doc(db, "users", uid);
+
+        setDoc(usersDocRef, {
+          plants: ["wisdom"],
+        })
+          .then(() => {
+            console.log("User document created successfully!");
+          })
+          .catch((error) => {
+            console.error("Error creating user document:", error);
+            window.alert("Error occurred while creating user document.");
+          });
+
+        window.alert("Success! Account created.");
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        window.alert("Error occurred while creating user account: " + errorMessage);
+      });
   }
 });
 
