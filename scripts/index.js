@@ -1,4 +1,4 @@
-import { app, auth, db, collection, doc, setDoc, getDocs, signInWithEmailAndPassword, createUserWithEmailAndPassword } from './firebase.js';
+import { app, auth, db, collection, doc, setDoc, getDocs, signInWithEmailAndPassword, createUserWithEmailAndPassword, setPersistence, browserLocalPersistence, onAuthStateChanged } from './firebase.js';
 
 const submitButton = document.getElementById("submit");
 const signupButton = document.getElementById("sign-up");
@@ -95,3 +95,20 @@ if (user) {
 } else {
   console.log("No user is logged in.");
 }
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    console.log("User is logged in:", user.uid);
+    fetchCurrentUserPlants(user.uid);
+  } else {
+    console.log("No user is logged in.");
+  }
+});
+
+setPersistence(auth, browserLocalPersistence)
+  .then(() => {
+    console.log("Persistence set to local storage.");
+  })
+  .catch((error) => {
+    console.error("Error setting persistence:", error);
+  });

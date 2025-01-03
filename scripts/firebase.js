@@ -16,21 +16,4 @@ const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    console.log("User is logged in:", user.uid);
-    fetchCurrentUserPlants(user.uid);
-  } else {
-    console.log("No user is logged in.");
-  }
-});
-
-setPersistence(auth, browserLocalPersistence)
-  .then(() => {
-    console.log("Persistence set to local storage.");
-  })
-  .catch((error) => {
-    console.error("Error setting persistence:", error);
-  });
-
-export { app, auth, db, collection, doc, setDoc, getDocs, signInWithEmailAndPassword, createUserWithEmailAndPassword };
+export { app, auth, db, collection, doc, setDoc, getDocs, signInWithEmailAndPassword, createUserWithEmailAndPassword, setPersistence, browserLocalPersistence, onAuthStateChanged };

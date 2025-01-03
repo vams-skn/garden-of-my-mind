@@ -1,4 +1,4 @@
-import { app, auth, db, collection, doc, setDoc, getDocs, signInWithEmailAndPassword, createUserWithEmailAndPassword } from './firebase.js';
+import { app, auth, db, collection, doc, setDoc, getDocs, signInWithEmailAndPassword, createUserWithEmailAndPassword, setPersistence, browserLocalPersistence, onAuthStateChanged } from './firebase.js';
 
 async function fetchCurrentUserPlants() {
     try {
