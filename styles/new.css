@@ -1,0 +1,62 @@
+.container {
+    margin: 0 auto; 
+    width: 80%;
+    max-width: 800px;
+    background: #fff;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#virtues-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.virtue-btn {
+    flex: 1 1 calc(33.333% - 10px);
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+    background-color: #A888B5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.virtue-btn:hover {
+    background-color: #EFB6C8;
+    color: black;
+}
+
+#submit-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #FFD2A0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#submit-btn:hover {
+    background-color: #ce9b61;
+    color: white;
+}
