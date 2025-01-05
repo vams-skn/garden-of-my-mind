@@ -89,22 +89,6 @@ returnBtn.addEventListener("click", function() {
 
 const user = auth.currentUser;
 
-if (user) {
-  const displayName = user.displayName;
-  console.log("Logged-in User's Name:", displayName);
-} else {
-  console.log("No user is logged in.");
-}
-
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    console.log("User is logged in:", user.uid);
-    fetchCurrentUserPlants(user.uid);
-  } else {
-    console.log("No user is logged in.");
-  }
-});
-
 setPersistence(auth, browserLocalPersistence)
   .then(() => {
     console.log("Persistence set to local storage.");
