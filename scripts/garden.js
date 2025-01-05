@@ -1,5 +1,7 @@
 import { app, auth, db, collection, doc, setDoc, getDocs, getDoc, signInWithEmailAndPassword, createUserWithEmailAndPassword, setPersistence, browserLocalPersistence, onAuthStateChanged } from './firebase.js';
 
+const gardenInsert = document.getElementById("garden");
+
 onAuthStateChanged(auth, (user) => {
   if (user) {
     console.log("User is logged in:", user.uid);
@@ -7,18 +9,20 @@ onAuthStateChanged(auth, (user) => {
     const fetchPlants = async () => {
         const user = auth.currentUser;
     
-        if (!user) {
-            console.error("No user is logged in.");
-            return;
-        }
-    
         try {
             const docRef = doc(db, "users", user.uid);
             const docSnap = await getDoc(docRef);
     
             if (docSnap.exists()) {
-                const plantList = docSnap.data().plants || [];
-                console.log("Plant List:", plantList);
+                var flowers = docSnap.data().plants || [];
+                console.log("Plant List:", flowers);
+
+                flowers = [...flowers];
+                flowers.forEach(flower => {
+                  var img = `<img src="../assets/images/${flower}.png" class="img-fluid m-4 mb-1" alt="${flower}" width="70" loading="lazy">`;
+                  gardenInsert.innerHTML += img;
+                });
+
             } else {
                 console.error("No document found for the current user.");
             }
@@ -28,7 +32,9 @@ onAuthStateChanged(auth, (user) => {
     };
     
     fetchPlants();
-  } else {
+  }
+  
+  else {
     console.log("No user is logged in.");
   }
 });
