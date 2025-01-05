@@ -42,7 +42,7 @@ createacctbtn.addEventListener("click", function () {
         const usersDocRef = doc(db, "users", uid);
 
         setDoc(usersDocRef, {
-          plants: ["wisdom"]
+          plants: ["gratitude"]
         })
           .then(() => {
             console.log("User document created successfully!");
