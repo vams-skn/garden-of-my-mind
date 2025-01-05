@@ -20,3 +20,19 @@ body {
 .nav-link:hover {
   color: aquamarine;
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FFB0B0; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9446ac; 
+}
