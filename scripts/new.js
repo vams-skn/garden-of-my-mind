@@ -21,6 +21,11 @@ onAuthStateChanged(auth, (user) => {
     });
 
     submitBtn.addEventListener('click', async () => {
+      if (!newEntry.value.trim()) {
+        alert('Please write a journal entry.');
+        return;
+      }
+
       if (!selectedVirtue) {
         alert('Please select a virtue.');
         return;
