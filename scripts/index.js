@@ -1,4 +1,4 @@
-import { app, auth, db, collection, doc, setDoc, getDocs, signInWithEmailAndPassword, createUserWithEmailAndPassword, setPersistence, browserLocalPersistence, onAuthStateChanged } from './firebase.js';
+import { app, auth, db, collection, doc, setDoc, getDocs, signInWithEmailAndPassword, createUserWithEmailAndPassword, setPersistence, browserLocalPersistence, onAuthStateChanged, updateDoc, arrayUnion } from './firebase.js';
 
 const submitButton = document.getElementById("submit");
 const signupButton = document.getElementById("sign-up");
