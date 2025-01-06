@@ -16,3 +16,7 @@
 .btn-outline-secondary:hover {
   background-color: #7fcb70;
 }
+
+.disabled-link:hover {
+  color: #FFD2A0;
+}
