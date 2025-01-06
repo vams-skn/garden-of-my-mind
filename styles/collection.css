@@ -1,0 +1,11 @@
+img {
+    width: 7rem;
+}
+
+.col-md-4 {
+    margin: 0 auto;
+}
+
+.container {
+    max-width: 900px;
+}
