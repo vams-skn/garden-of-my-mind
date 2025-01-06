@@ -1,3 +1,8 @@
+#home-btn {
+    margin: 20px;
+    margin-bottom: 0;
+}
+
 img {
     width: 7rem;
 }
@@ -8,4 +13,15 @@ img {
 
 .container {
     max-width: 900px;
+}
+
+.card {
+    background-color: #fffff4;
+}
+
+hr {
+    margin: 0 auto;
+    height: 3px;
+    width: 900px;
+    background-color: black;
 }
